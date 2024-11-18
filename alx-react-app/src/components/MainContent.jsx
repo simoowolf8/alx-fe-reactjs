@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Main() {
+function MainContent() {
   return (
     <main>
       <p>I love to visit New York, Paris, and Tokyo.</p>
@@ -8,5 +8,5 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainContent;
 
