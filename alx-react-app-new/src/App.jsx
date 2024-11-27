@@ -7,6 +7,7 @@ import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile.jsx'
+import Counter from './components/Counter.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
         </a>
       </div>
       <MainContent />
+      <Counter />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       <h1>Hello everyone, I am learning React at ALX!</h1>
       <p>I am learning about JSX!</p>
