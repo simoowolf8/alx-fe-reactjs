@@ -8,7 +8,7 @@ import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile.jsx'
 import ProfilePage from './components/ProfilePage.jsx'
-import UserContext from './UserContext.js';
+import UserContext from './UserContext.js'
 
 function App() {
   const [count, setCount] = useState(0)
