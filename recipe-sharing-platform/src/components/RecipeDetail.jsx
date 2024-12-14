@@ -28,7 +28,6 @@ const RecipeDetail = () => {
         className="w-full max-w-md mx-auto mb-4 rounded shadow-lg"
       />
       <p className="text-gray-700 text-lg mb-6">{recipe.summary}</p>
-
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2">Ingredients</h2>
         <ul className="list-disc list-inside">
@@ -39,7 +38,6 @@ const RecipeDetail = () => {
           ))}
         </ul>
       </div>
-
       <div>
         <h2 className="text-2xl font-semibold mb-2">Cooking Instructions</h2>
         <ol className="list-decimal list-inside">
