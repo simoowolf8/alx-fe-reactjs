@@ -6,23 +6,29 @@ const Search = () => {
   const [loading, setLoading] = useState(false); // Tracks loading state
   const [error, setError] = useState(''); // Tracks error messages
 
+  // Define fetchUserData
+  const fetchUserData = async (username) => {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    if (!response.ok) {
+      throw new Error("Looks like we cant find the user");
+    }
+    return response.json();
+  };
+
+  // Handle search logic
   const handleSearch = async (e) => {
-    e.preventDefault(); // Prevent page reload
-    setLoading(true); // Start loading
-    setError(''); // Clear any previous error
-    setUserData(null); // Clear previous results
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setUserData(null);
 
     try {
-      const response = await fetch(`https://api.github.com/users/${username}`);
-      if (!response.ok) {
-        throw new Error("Looks like we cant find the user"); // Set the expected error message
-      }
-      const data = await response.json();
-      setUserData(data); // Save user data
+      const data = await fetchUserData(username); // Call fetchUserData
+      setUserData(data);
     } catch (err) {
-      setError(err.message); // Set error message
+      setError(err.message);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -46,18 +52,18 @@ const Search = () => {
       </form>
 
       {/* Conditional Rendering */}
-      {loading && <p>Loading...</p>} {/* Display loading */}
-      {error && <p className="text-red-500">{error}</p>} {/* Display error */}
+      {loading && <p>Loading...</p>} {/* Displays while loading */}
+      {error && <p className="text-red-500">{error}</p>} {/* Displays if an error occurs */}
       {userData && (
         <div className="flex flex-col items-center mt-4">
           <img
-            src={userData.avatar_url}
-            alt={userData.login}
+            src={userData.avatar_url} // Avatar URL from API
+            alt={userData.login} // GitHub username for alt text
             className="w-24 h-24 rounded-full"
           />
-          <h2 className="text-xl font-bold">{userData.login}</h2>
+          <h2 className="text-xl font-bold">{userData.login}</h2> {/* GitHub username */}
           <a
-            href={userData.html_url}
+            href={userData.html_url} // Profile link from API
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:underline"
